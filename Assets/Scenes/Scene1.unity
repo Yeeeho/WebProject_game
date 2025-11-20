@@ -1351,7 +1351,10 @@ MonoBehaviour:
   uiScore: {fileID: 1859626804}
   userSprite:
   - {fileID: -5138667542262441889, guid: 81b21224da44f84449af48bbaad137c2, type: 3}
+  - {fileID: -6938942903062386467, guid: 5cb1be0237d63794b98a26aff71bf056, type: 3}
   - {fileID: -1393541234135840120, guid: e13f819a69b0c3a46b627941f6b17aea, type: 3}
+  - {fileID: -9043347127398575020, guid: 4a828ebdd2766ba41b425c60a710de8a, type: 3}
+  - {fileID: -21631703022585486, guid: de095e656a7a54142b5888e03fa3faac, type: 3}
   isGameOver: 0
   score: 0
   jumpForce: 20
