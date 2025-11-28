@@ -7,6 +7,10 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController Instance;
+
+    SoundListener Sl => SoundListener.Instance;
+
     [DllImport("__Internal")]
     private static extern void Status(bool isGameOver, int score);
 
@@ -16,15 +20,20 @@ public class PlayerController : MonoBehaviour
     public bool isGameOver;
     public int score = 0;
 
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     
     public float jumpForce = 100f;
     private Vector2 jumpVector;
     public bool isJumpable = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private void Awake()
+    {
+        Instance = this;
+    }
     void Start()
     {
+
         rb = GetComponent<Rigidbody2D>();
         jumpVector = new Vector2(0, jumpForce);
         isGameOver = false;
@@ -34,6 +43,12 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Sl.loudness > 1.0f && isJumpable == true)
+        {
+            rb.linearVelocityY = 0f;
+            rb.AddForce(jumpVector, ForceMode2D.Impulse);
+            isJumpable = false;
+        }
 
         if (Input.GetKeyDown(KeyCode.Space) && isJumpable == true)
         {
@@ -75,7 +90,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void SpriteSelect(int num)
+    public void SpriteSelect(int num)
     {
         SpriteRenderer sprd = gameObject.GetComponent<SpriteRenderer>();
         sprd.sprite = userSprite[num];

@@ -6,7 +6,7 @@ public class ObstacleController : MonoBehaviour
 
 
     public float speed = 3f;
-    private Vector2 spawnPos = new Vector2(11.5f, -3.9f);
+    private Vector2 spawnPos = new Vector2(11.5f, -4f);
     private Vector2 sleepPos = new Vector2(-13f, -10f);
     public bool isActive = false;
     ObstacleManager om => ObstacleManager.Instance;
